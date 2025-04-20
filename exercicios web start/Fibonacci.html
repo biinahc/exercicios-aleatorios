@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Série de Fibonacci</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f0f0f0, #ffe0e0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #555;
+        }
+
+        #resultadoFibonacci {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Série de Fibonacci </h2>
+        <div id="resultadoFibonacci"></div>
+    </div>
+
+    <script>
+        function gerarFibonacci(quantidade) {
+            const fibonacci = [0, 1];
+            if (quantidade <= 2) {
+                return fibonacci.slice(0, quantidade);
+            }
+            for (let i = 2; i < quantidade; i++) {
+                const proximo = fibonacci[i - 1] + fibonacci[i - 2];
+                fibonacci.push(proximo);
+            }
+            return fibonacci;
+        }
+
+        const quantidadeDesejada = 10;
+        const serieFibonacci = gerarFibonacci(quantidadeDesejada);
+        const resultadoDiv = document.getElementById("resultadoFibonacci");
+        resultadoDiv.textContent = `Os ${quantidadeDesejada} primeiros números da série de Fibonacci são: ${serieFibonacci.join(', ')}`;
+    </script>
+</body>
+</html>
