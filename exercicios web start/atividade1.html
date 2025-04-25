@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadorade Média da Turma</title>
+</head>
+<body>
+    <h1>Calculadora de Média da Turma</h1>
+
+    <div id="alunos-notas">
+
+    </div>
+    <div id="resultado">
+
+    </div>
+
+    <script>
+function calcularMedia(nota1, nota2) {
+    return (nota1 + nota2) /2;
+}
+function main() {
+    const numeroAlunos = 5;
+    const alunos=[];
+    let somaMedias = 0;
+
+const alunosNotasDiv = document.getElementById("alunos-notas");
+const resultadoDiv = document.getElementById("resultado");
+
+for (let i=0; i<numeroAlunos;i++) {
+    const nome = prompt(`Digite o nome do aluno ${i+1}:`);
+    const nota1= parseFloat(prompt(`Digite a nota da primeira prova de ${nome}:`));
+    const nota2= parseFloat(prompt(`Digite a nota da segunda prova de ${nome}:`));
+
+
+    if (isNaN(nota1)|| isNaN(nota2)) {
+        alert("Por favor, digite notas válidas!");
+        i--;
+        continue;
+    }
+const mediaAluno= calcularMedia(nota1,nota2);
+alunos.push({nome, nota1, nota2,media: mediaAluno});
+somaMedias += mediaAluno;
+
+alunosNotasDiv.innerHTML += `<p>Aluno:${nome}, Nota 1: ${nota1}, Nota 2: ${nota2}, Média: ${mediaAluno.toFixed(2)} </p>`;
+
+
+}
+
+if (alunos.length > 0) {
+    const mediaTurma = somaMedias / alunos.length;sabr
+    resultadoDiv.innerHTML += `<h2>Média da Turma: ${mediaTurma.toFixed(2)} </h2>`
+    resultadoDiv.innerHTML += "<h3>Alunos com média maior que a média da turma: </h3>"
+    const alunosAcimaDaMedia = alunos.filter(aluno => aluno.media > mediaTurma);
+    if (alunosAcimaDaMedia.length > 0) {
+        alunosAcimaDaMedia.forEach(aluno =>{resultadoDiv.innerHTML += `<p>${aluno.nome} (Média: ${aluno.media.toFixed(2)})</p>`;
+            });
+    } else{
+        resultadoDiv.innerHTML += "<p>Nenhum aluno apresentou média maior que a média da turma!!</p>";
+    }
+}
+
+
+}
+
+main();
+
+
+
+    </script>
+</body>
+</html>
