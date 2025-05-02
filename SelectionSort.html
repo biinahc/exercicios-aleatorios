@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenação de Vetor</title>
+    <style>
+        body {
+            background: #f3f4f6;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+        .container {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 350px;
+        }
+
+
+        button {
+            background: #ffffff;
+            color: #ff758c;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #d1d1d1;
+        }
+
+
+        input {
+            width: 90%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+
+        #listaNumeros {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+
+        .lista-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .coluna {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+
+        #assinatura {
+            font-weight: bold;
+            margin-top: 15px;
+            color: white;
+            font-style: italic;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Ordenação de Vetor</h2>
+        <p>Insira 10 números um número de cada vez:</p>
+        <input type="number" id="inputNumero" placeholder="Digite um número">
+        <button onclick="adicionarNumero()">Adicionar</button>
+        <button onclick="ordenarVetor()">Ordenar</button>
+        <p id="listaNumeros">Números adicionados: Nenhum</p>
+        <div class="lista-container" id="listaOrdenada" style="display: none;">
+            <ul class="coluna" id="coluna1"></ul>
+            <ul class="coluna" id="coluna2"></ul>
+        </div>
+        <p id="assinatura">Exercício criado por Sabrina Caldas :)</p>
+    </div>
+
+    <script>
+        let vetor = [];
+
+        function adicionarNumero() {
+            let input = document.getElementById("inputNumero").value;
+
+            if (input === "") {
+                alert("Por favor, insira um número.");
+                return;
+            }
+
+            if (vetor.length >= 10) {
+                alert("Você já inseriu 10 números! Clique em 'Ordenar' para ver a lista.");
+                document.getElementById("inputNumero").value = "";
+                return;
+            }
+
+            vetor.push(Number(input));
+            document.getElementById("inputNumero").value = "";
+
+
+            document.getElementById("listaNumeros").innerText = "Números adicionados: " + vetor.join(', ');
+
+            if (vetor.length === 10) {
+                document.getElementById("listaNumeros").innerText += " (Pronto para ordenar!)";
+            }
+        }
+
+        function ordenarVetor() {
+            if (vetor.length < 10) {
+                alert("Por favor, insira todos os 10 números antes de ordenar!");
+                return;
+            }
+
+            vetor.sort((a, b) => a - b);
+
+
+            document.getElementById("listaOrdenada").style.display = "flex";
+            let coluna1 = document.getElementById("coluna1");
+            let coluna2 = document.getElementById("coluna2");
+            coluna1.innerHTML = "";
+            coluna2.innerHTML = "";
+
+            for (let i = 0; i < 10; i++) {
+                let item = document.createElement("li");
+                item.textContent = vetor[i];
+
+                if (i < 5) {
+                    coluna1.appendChild(item);
+                } else {
+                    coluna2.appendChild(item);
+                }
+            }
+
+            document.getElementById("assinatura").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

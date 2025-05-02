@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <script>
+
+
+    alert("Operação com números!");
+
+    function saltoLinha (){
+        document.write ("<br>");
+    }
+
+    function somaDoisNumeros(a,b) {
+        return a + b;
+    }
+
+    function divideDoisNumeros(a,b) {
+        return a/b;
+
+    }
+
+    function multiplicaDoisNumero(a,b){
+        return a*b;
+    }
+   
+    var a = +prompt ("Entre com o valor de a: ");
+    var b = +prompt ("Entre com o valor de b: ");
+
+    document.write ("A soma é " + somaDoisNumeros(a,b));
+    saltoLinha()
+    document.write ("A divisão é " + divideDoisNumeros(a,b));
+    saltoLinha()
+    document.write ("A multiplicação é " + multiplicaDoisNumero(a,b));
+    saltoLinha()
+
+
+
+    
+   </script>

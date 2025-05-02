@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Matriz 3x3</title>
+</head>
+
+<body>
+    <h1>Calculadora de Matriz 3x3</h1>
+
+    <div id="matriz-container">
+        <h2>Matriz Inserida:</h2>
+        <div id="matriz-exibicao"></div>
+    </div>
+
+    <div id="resultados">
+        <h2>Resultados:</h2>
+        <p id="soma-total"></p>
+        <p id="soma-linha-3"></p>
+        <p id="soma-coluna-2"></p>
+        <p id="soma-diagonal-principal"></p>
+    </div>
+
+    <script>
+        function main() {
+            const matriz = [];
+            const matrizExibicaoDiv = document.getElementById("matriz-exibicao");
+            const somaTotalParagrafo = document.getElementById("soma-total");
+            const somaLinha3Paragrafo = document.getElementById("soma-linha-3");
+            const somaColuna2Paragrafo = document.getElementById("soma-coluna-2");
+            const somaDiagonalPrincipalParagrafo = document.getElementById("soma-diagonal-principal");
+
+            alert("Por favor, digite os 9 elementos da matriz 3x3.");
+
+
+            for (let i = 0; i < 3; i++) {
+                matriz[i] = [];
+                for (let j = 0; j < 3; j++) {
+                    const elemento = parseFloat(prompt(`Digite o elemento da linha ${i + 1}, coluna ${j + 1}:`));
+                    if (isNaN(elemento)) {
+                        alert("Por favor, digite um número válido.");
+                        j--;
+                        continue;
+                    }
+                    matriz[i][j] = elemento;
+                }
+            }
+
+
+            let matrizHTML = "";
+            for (let i = 0; i < 3; i++) {
+                matrizHTML += matriz[i].join(" &nbsp;&nbsp; ") + "<br>";
+            }
+            matrizExibicaoDiv.innerHTML = matrizHTML;
+
+
+            let somaTotal = 0;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    somaTotal += matriz[i][j];
+                }
+            }
+            somaTotalParagrafo.textContent = `Soma total dos elementos: ${somaTotal}`;
+
+
+            let somaLinha3 = 0;
+            for (let j = 0; j < 3; j++) {
+                somaLinha3 += matriz[2][j];
+            }
+            somaLinha3Paragrafo.textContent = `Soma dos elementos da linha 3: ${somaLinha3}`;
+
+
+            let somaColuna2 = 0;
+            for (let i = 0; i < 3; i++) {
+                somaColuna2 += matriz[i][1];
+            }
+            somaColuna2Paragrafo.textContent = `Soma dos elementos da coluna 2: ${somaColuna2}`;
+
+
+            let somaDiagonalPrincipal = 0;
+            for (let i = 0; i < 3; i++) {
+                somaDiagonalPrincipal += matriz[i][i];
+            }
+            somaDiagonalPrincipalParagrafo.textContent = `Soma dos elementos da diagonal principal: ${somaDiagonalPrincipal}`;
+        }
+
+        main();
+    </script>
+</body>
+
+</html>
