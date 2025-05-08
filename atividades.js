@@ -1,5 +1,6 @@
 
 // 1 - Ordenação de Vetor
+
 function ordenarVetor() {
     let vetor = [12, -5, 3, -9, 8, 0, -2, 7];
 
@@ -11,6 +12,7 @@ function ordenarVetor() {
 ordenarVetor();
 
 // 2 - Jogo da Mega Sena (Sorteio de Números)
+
 function megaSena() {
     let numeros = [];
 
@@ -27,6 +29,7 @@ function megaSena() {
 megaSena();
 
 // 3 - Ordenação de 20 números aleatórios
+
 function ordenarNumerosAleatorios() {
     let numeros = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1001));
 
